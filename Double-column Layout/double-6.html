@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双栏-定宽自适应-6.table布局</title>
+</head>
+<body>
+<div class="container">
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+
+</body>
+<style>
+    .container{
+        width:100%;
+        display:table;
+    }
+    .left{
+        display:table-cell;
+        width:300px;
+        height:300px;
+        background-color: yellow;
+    }
+    .right{
+        display: table-cell;
+        /*height:300px;*//*就算不写，高度也还是300px*/
+        background-color: blue;
+    }
+</style>
+</html>
