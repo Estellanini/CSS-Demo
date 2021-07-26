@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三栏-5.定位</title>
+</head>
+<body>
+<div class="container">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="main"></div>
+</div>
+
+</body>
+<style>
+    .container{
+        position:relative;
+    }
+    .left{
+        position:absolute;
+        background-color: yellow;
+        width:200px;
+        height:300px;
+        left:0;
+    }
+    .right{
+        position: absolute;
+        background-color: purple;
+        width:200px;
+        height:300px;
+        right:0;
+    }
+    .main{
+        background-color: cornflowerblue;
+        height:300px;
+        margin:0 200px;
+    }
+
+</style>
+</html>
