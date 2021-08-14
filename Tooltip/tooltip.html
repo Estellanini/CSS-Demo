@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ToolTip</title>
+    <style type="text/css">
+
+        #demo{
+            width: 500px;
+            margin: auto;
+            position: relative;
+        }
+        #demo a{
+            color: #11C2EE;
+        }
+        .tooltip-box{
+            display: block;
+            line-height: 1.6;
+            background-color: #fff;
+            border: 1px solid #666;
+            font-size: 12px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div id="demo">
+    <h2>实现tooltip的效果</h2>
+    <hr />
+    <p>tooltip<a class="tooltip" id="tooltip1">效果</a>测试</p>
+    <p>下面是<a class="tooltip" id="tooltip2">小猪</a>图片的测试</p>
+</div>
+<script>
+    var className = 'tooltip-box';
+
+   // var isIE = navigator.userAgent.indexOf('MSIE') > -1;
+
+    function showTooltip(obj, id, html, width, height) {
+        if (document.getElementById(id) == null) {
+
+            var tooltipBox;
+            tooltipBox = document.createElement('div');
+            tooltipBox.className = className;
+            tooltipBox.id = id;
+            tooltipBox.innerHTML = html;
+
+            obj.appendChild(tooltipBox);
+
+            tooltipBox.style.width = width ? width + 'px' : 'auto';
+            tooltipBox.style.height = height ? height + 'px' : 'auto';
+
+/*            if (!width && isIE) {
+                tooltipBox.style.width = tooltipBox.offsetWidth;
+            }*/
+
+            tooltipBox.style.position = "absolute";
+            tooltipBox.style.display = "block";
+
+            var left = obj.offsetLeft;//获取的是相对于父对象的左边距;
+            var top = obj.offsetTop + 20;//需要使tooltip出现在提示对象的下方，如果没有这个20，那么提示框便会将其覆盖。
+
+
+            //当将页面变小的时候，判断tooltip的提示框的宽度，如果宽度太大，但是屏幕太小，那就随着整个屏幕的大小进行变化。
+            /*if (left + tooltipBox.offsetWidth > document.body.clientWidth) {
+                var demoLeft = document.getElementById("demo").offsetLeft;
+                left = document.body.clientWidth - tooltipBox.offsetWidth - demoLeft;
+                if (left < 0) left = 0;
+            }*/
+
+            tooltipBox.style.left = left + 'px';
+            tooltipBox.style.top = top + 'px';
+
+            obj.onmouseleave = function () {
+                setTimeout(function () {
+                    document.getElementById(id).style.display = "none";
+                }, 100);
+            };
+
+        } else {
+            document.getElementById(id).style.display = "block";
+        }
+    }
+
+
+    var t1 =document.getElementById("tooltip1");
+    t1.onmouseenter = function(){
+        showTooltip(this,"t1","这里是弹出来的tooltip",100);
+    }
+
+    var t2 =document.getElementById("tooltip2");
+    t2.onmouseenter = function(){
+        showTooltip(this, "t2", '<img src="pig.jpg" width="400" /> ', 500,500);
+    }
+
+</script>
+</body>
+</html>
