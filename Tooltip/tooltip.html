@@ -58,6 +58,7 @@
             tooltipBox.style.position = "absolute";
             tooltipBox.style.display = "block";
 
+            //父元素必须要写position,不写的话就会继续找父元素的父元素的position，如果都没有就找到body了
             var left = obj.offsetLeft;//获取的是相对于父对象的左边距;
             var top = obj.offsetTop + 20;//需要使tooltip出现在提示对象的下方，如果没有这个20，那么提示框便会将其覆盖。
 
